@@ -8,8 +8,8 @@ import { Observable } from 'rxjs';
 export class ApiService {
 
   baseUrl = 'http://localhost:8000/';
-  
-  httpHeaders = new HttpHeaders({'Content-Type':'application/json'});
+  token = 'Token ad34d8891841edf812dd46c0ff2d3861c003b65a';
+  httpHeaders = new HttpHeaders().set('Content-Type','application/json').set('Authorization',this.token);
   constructor(private http: HttpClient) { }
 
   getAllMembers(): Observable<any> {
@@ -20,4 +20,5 @@ export class ApiService {
     return this.http.get(this.baseUrl + 'members/' + id +'/',
     {headers: this.httpHeaders });
   };
+  
 }
